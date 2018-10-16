@@ -9,24 +9,26 @@ userCreateSubmitButton.addEventListener('click', (event) => {
     const zipCode = document.querySelector('input[name="zip-code"]').value;
     const mobileNumber = document.querySelector('input[name="mobile-number"]').value;
     const socialMedia = document.querySelector('input[name="social-profile"]').value;
-    const preferredCommMethod = (() => {
-        const contactMethodRadioButtons = document.getElementsByName('preferred-contact-method-selector');
-        for (let radioButton of contactMethodRadioButtons) {
-            if (radioButton.checked) {
-                return radioButton.value;
-            }
-        }
-    })();
-    const userDevices = (() => {
-        const devices = [];
-        const userDevicesCheckBoxes = document.getElementsByName('user-devices');
-        for (let checkbox of userDevicesCheckBoxes) {
-            if (checkbox.checked) {
-                devices.push(checkbox.value);
-            }
-        }
-        return devices;
-    })();
+    // const preferredCommMethod = (() => {
+    //     const contactMethodRadioButtons = document.getElementsByName('preferred-contact-method-selector');
+    //     for (let radioButton of contactMethodRadioButtons) {
+    //         if (radioButton.checked) {
+    //             return radioButton.value;
+    //         }
+    //     }
+    // })();
+    const preferredCommMethod = document.querySelector('input[name=preferred-contact-method-selector]:checked').value;
+    // const userDevices = (() => {
+    //     const devices = [];
+    //     const userDevicesCheckBoxes = document.getElementsByName('user-devices');
+    //     for (let checkbox of userDevicesCheckBoxes) {
+    //         if (checkbox.checked) {
+    //             devices.push(checkbox.value);
+    //         }
+    //     }
+    //     return devices;
+    // })();
+    const userDevices = Array.from(document.querySelectorAll('input[name=user-devices]:checked')).map(box => box.value);
 
     const userType = (() => {
         const userTypeSelect = document.getElementById('user-type');
